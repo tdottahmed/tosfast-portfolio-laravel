@@ -1,5 +1,4 @@
 @props(['permissionGroups', 'role' => []])
-{{-- @dd($role->permissions->groupBy('group')); --}}
 <div id="permissionsAccordion" class="accordion accordion-flush">
     @foreach ($permissionGroups as $key => $group)
         @php
