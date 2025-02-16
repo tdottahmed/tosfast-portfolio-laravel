@@ -32,14 +32,28 @@
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <x-layouts.admin.partials.sidebar-menu-item route="dashboard" icon="ri-dashboard-line"
                     label="Dashboard" />
-                <x-layouts.admin.partials.sidebar-menu-item route="notes.index" icon="ri-file-list-3-line"
-                    label="Notes" />
+
+                <x-layouts.admin.partials.sidebar-menu-item route="banners.index" icon="ri-image-line"
+                    label="Banners" />
+                <x-layouts.admin.partials.sidebar-menu-item route="services.index" icon="ri-building-line"
+                    label="Services" />
+                <x-layouts.admin.partials.sidebar-menu-item route="products.index" icon="ri-shopping-bag-line"
+                    label="Products" />
+                <x-layouts.admin.partials.sidebar-menu-item route="teams.index" icon="ri-group-line" label="Teams" />
+                <x-layouts.admin.partials.sidebar-menu-item route="testimonials.index" icon="ri-chat-quote-line"
+                    label="Testimonials" />
+                <x-layouts.admin.partials.sidebar-menu-item route="blogs.index" icon="ri-news-line" label="Blogs" />
+
+
                 <x-layouts.admin.partials.sidebar-menu-item route="roles.index" icon="ri-user-2-line"
                     label="Users Management" :dropdown-routes="[
                         'roles.index' => 'Roles',
                         'permissions.index' => 'Permissions',
                         'users.index' => 'Users',
                     ]" />
+                <x-layouts.admin.partials.sidebar-menu-item route="notes.index" icon="ri-file-list-3-line"
+                    label="Notes" />
+
                 <x-layouts.admin.partials.sidebar-menu-item route="applicationSetup.index" icon="ri-settings-3-line"
                     label="Application Setup" />
             </ul>

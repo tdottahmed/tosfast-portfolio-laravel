@@ -1,6 +1,8 @@
 @props([
     'appendedColumns' => [],
+    'ignoreColumns' => [], // New prop for ignoring columns
 ])
+
 <table id="scroll-horizontal" class="table nowrap align-middle dt-responsive" style="width:100%">
     <thead>
         <tr>
@@ -10,13 +12,15 @@
                 </div>
             </th>
             <th>{{ __('SL No') }}</th>
-            @isset($appendedColumns)
-                @foreach ($appendedColumns as $column)
+            @foreach ($appendedColumns as $column)
+                @if (!in_array($column, $ignoreColumns))
                     <th>{{ ucwords(str_replace('_', ' ', $column)) }}</th>
-                @endforeach
-            @endisset
+                @endif
+            @endforeach
             @foreach ($columns as $column)
-                <th>{{ ucwords(str_replace('_', ' ', $column)) }}</th>
+                @if (!in_array($column, $ignoreColumns))
+                    <th>{{ ucwords(str_replace('_', ' ', $column)) }}</th>
+                @endif
             @endforeach
             <th class="text-center">Action</th>
         </tr>
@@ -30,19 +34,28 @@
                     </div>
                 </th>
                 <td>{{ $loop->iteration }}</td>
-                @isset($appendedColumns)
-                    @foreach ($appendedColumns as $column)
+                @foreach ($appendedColumns as $column)
+                    @if (!in_array($column, $ignoreColumns))
                         <td>{{ $row->$column }}</td>
-                    @endforeach
-                @endisset
+                    @endif
+                @endforeach
                 @foreach ($columns as $column)
-                    <td>
-                        @if ($column === 'created_at' || $column === 'updated_at')
-                            {{ \Carbon\Carbon::parse($row->$column)->diffForHumans() }}
-                        @else
-                            {{ $row->$column }}
-                        @endif
-                    </td>
+                    @if (!in_array($column, $ignoreColumns))
+                        <td>
+                            @if (in_array($column, ['created_at', 'updated_at']))
+                                {{ \Carbon\Carbon::parse($row->$column)->diffForHumans() }}
+                            @elseif ($column === 'status')
+                                <span class="badge bg-{{ $row->$column === 'Active' ? 'success' : 'danger' }}">
+                                    {{ $row->$column }}
+                                </span>
+                            @elseif (str($row->$column)->contains('image'))
+                                <img src="{{ getFilePath($row->$column) }}" alt="image" class="mb-30"
+                                    style="max-width: 100%; height: 100px;">
+                            @else
+                                {{ $row->$column }}
+                            @endif
+                        </td>
+                    @endif
                 @endforeach
                 <td class="text-center">
                     <x-data-display.data-table-action :actions="$getActions($row)" />
@@ -50,7 +63,8 @@
             </tr>
         @empty
             <tr>
-                <td colspan="{{ count($columns) + 3 }}" class="text-center">
+                <td colspan="{{ count(array_diff($columns, $ignoreColumns)) + count(array_diff($appendedColumns, $ignoreColumns)) + 2 }}"
+                    class="text-center">
                     No data found
                 </td>
             </tr>
@@ -69,12 +83,8 @@
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script>
-        function initializeTables() {
-            new DataTable("#example"),
-                new DataTable("#scroll-horizontal")
-        }
         document.addEventListener("DOMContentLoaded", function() {
-            initializeTables();
+            new DataTable("#scroll-horizontal");
         });
     </script>
 @endpush

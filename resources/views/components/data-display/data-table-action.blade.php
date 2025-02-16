@@ -8,14 +8,13 @@
         @foreach ($actions as $key => $action)
             <li>
                 @if (Str::lower($action['method']) == 'delete' || Str::lower($action['method']) == 'post')
-                    <form action="{{ $action['route'] }}" method="POST" class="delete-form"
-                        data-action="{{ $action['route'] }}" data-method="{{ Str::upper($action['method']) }}">
+                    <form action="{{ $action['route'] }}" method="POST" class="delete-form">
                         @if (Str::lower($action['method']) == 'delete')
                             @method('DELETE')
                         @endif
                         @csrf
                         <button type="button" class="dropdown-item remove-item-btn">
-                            <i class="{{ $action['icon'] }} align-bottom me-2 text-muted"></i> {{ $action['title'] }}
+                            <i class="{{ $action['icon'] }} align-bottom me-2 text-muted"></i> {{ __('Delete') }}
                         </button>
                     </form>
                 @else

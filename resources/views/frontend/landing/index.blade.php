@@ -1,6 +1,6 @@
 <x-layouts.frontend.master>
     <!-- Banner area start here -->
-    @include('frontend.landing.partials.banner')
+    @include('frontend.landing.partials.banner', compact('banners'))
     <!-- Banner area end here -->
 
     <!-- Service area start here -->

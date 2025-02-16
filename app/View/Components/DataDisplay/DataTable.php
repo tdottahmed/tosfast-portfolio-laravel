@@ -16,68 +16,71 @@ class DataTable extends Component
     public bool $showCreatedAt;
     public bool $showUpdatedAt;
     public array $columnsToIgnore;
-    public array $ignoreActions = [];
+    public array $ignoreActions;
 
-    /**
-     * Create a new component instance.
-     *
-     * @param  mixed $rows
-     * @param  array $extraActions
-     * @param  bool $createAt
-     * @param  bool $updatedAt
-     * @param  array $columnsToIgnore
-     * @param  array $ignoreActions  
-     * @return void
-     */
-    public function __construct($rows, array $extraActions = [], bool $createAt = false, bool $updatedAt = false, array $columnsToIgnore = [], array $ignoreActions = [])
-    {
+    public function __construct(
+        $rows,
+        array $extraActions = [],
+        bool $showCreatedAt = false,
+        bool $showUpdatedAt = false,
+        array $columnsToIgnore = [],
+        array $ignoreActions = []
+    ) {
         $this->rows = collect($rows);
         $this->extraActions = $extraActions;
-        $this->showCreatedAt = $createAt;
-        $this->showUpdatedAt = $updatedAt;
+        $this->showCreatedAt = $showCreatedAt;
+        $this->showUpdatedAt = $showUpdatedAt;
         $this->columnsToIgnore = $columnsToIgnore;
         $this->ignoreActions = $ignoreActions;
     }
 
     /**
      * Get default and extra actions for a row.
-     *
-     * @param  Model $row
-     * @return array
      */
     public function getActions(Model $row): array
     {
-        $defaultActions = [];
+        $defaultActions = $this->getDefaultActions($row);
+        $extraActions = $this->getExtraActions($row);
 
-        if (Route::has($row->getTable() . '.edit')) {
-            $defaultActions['edit'] = [
-                'title' => 'Edit',
-                'method' => 'GET',
-                'icon' => 'ri-pencil-fill',
-                'route' => route($row->getTable() . '.edit', $row->id),
-            ];
-        }
-        if (Route::has($row->getTable() . '.destroy')) {
-            $defaultActions['delete'] = [
-                'title' => 'Delete',
-                'method' => 'DELETE',
-                'icon' => 'ri-delete-bin-fill',
-                'route' => route($row->getTable() . '.destroy', $row->id),
-            ];
-        }
-        if (Route::has($row->getTable() . '.show')) {
-            $defaultActions['show'] = [
-                'title' => 'Show',
-                'method' => 'GET',
-                'icon' => 'ri-eye-fill',
-                'route' => route($row->getTable() . '.show', $row->id),
-            ];
-        }
-        foreach ($this->ignoreActions as $ignoreAction) {
-            unset($defaultActions[$ignoreAction]);
+        return array_merge($defaultActions, $extraActions);
+    }
+
+    /**
+     * Get default actions for a row.
+     */
+    protected function getDefaultActions(Model $row): array
+    {
+        $actions = [];
+        $routes = [
+            'edit' => ['method' => 'GET', 'icon' => 'ri-pencil-fill'],
+            'destroy' => ['method' => 'DELETE', 'icon' => 'ri-delete-bin-fill'], // Use 'destroy' instead of 'delete'
+            'show' => ['method' => 'GET', 'icon' => 'ri-eye-fill'],
+        ];
+
+        foreach ($routes as $action => $details) {
+            $routeName = $row->getTable() . '.' . $action;
+
+            if (Route::has($routeName)) {
+                $actions[$action] = [
+                    'title' => ucfirst($action),
+                    'method' => $details['method'],
+                    'icon' => $details['icon'],
+                    'route' => route($routeName, $row->id),
+                ];
+            } else {
+                logger("Route not found: {$routeName}");
+            }
         }
 
-        $extraActions = collect($this->extraActions)->map(function ($action) use ($row) {
+        return array_diff_key($actions, array_flip($this->ignoreActions));
+    }
+
+    /**
+     * Get extra actions for a row.
+     */
+    protected function getExtraActions(Model $row): array
+    {
+        return collect($this->extraActions)->map(function ($action) use ($row) {
             return [
                 'title' => $action['title'],
                 'method' => $action['method'],
@@ -85,21 +88,19 @@ class DataTable extends Component
                 'route' => route($action['route'], $row->id),
             ];
         })->toArray();
-        return array_merge($defaultActions, $extraActions);
     }
-
 
     /**
      * Filter visible columns for the table.
-     *
-     * @return array
      */
     public function getVisibleColumns(): array
     {
         if ($this->rows->isEmpty()) {
             return [];
         }
+
         $attributes = $this->rows->first()->getAttributes();
+
         return array_filter(array_keys($attributes), function ($column) {
             return !in_array($column, $this->columnsToIgnore) &&
                 (!in_array($column, ['id', 'created_at', 'updated_at']) ||
@@ -109,9 +110,7 @@ class DataTable extends Component
     }
 
     /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
+     * Render the component.
      */
     public function render(): View|Closure|string
     {

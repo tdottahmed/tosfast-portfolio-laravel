@@ -12,8 +12,7 @@
                     <div class="image sm-image">
                         <div class="video__btn-wrp">
                             <div class="video-btn video-pulse">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=iVqz_4M5mA0"><i
-                                        class="fa-solid fa-play"></i></a>
+                                <a class="video-popup" href="https://www.youtube.com/watch?v=iVqz_4M5mA0"><i class="fa-solid fa-play"></i></a>
                             </div>
                         </div>
                         <img src="assets/frontend/images/about/about-image2.png" alt="image">
@@ -27,15 +26,15 @@
                 <div class="section-header mb-40">
                     <h5 class="wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <img class="me-1" src="assets/frontend/images/icon/section-title.png" alt="icon">
-                        ABOUT Gratech
+                        <span class="editable" data-key="about_title">ABOUT Gratech</span>
                     </h5>
-                    <h2 class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">We Strive to
-                        Offer Intelligent Business Solutions</h2>
-                    <p class="wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">Aonsectetur
-                        adipiscing elit aenean scelerisque augue vitae consequat aisque eget congue
-                        velit in cursus sodales the
-                        turpis euismod quis sapien euismod
-                        quis sapien the condimentum nec lorem nulla augue.</p>
+                    <h2 class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+                        <span class="editable" data-key="about_heading">We Strive to Offer Intelligent Business Solutions</span>
+                    </h2>
+                    <p class="wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
+                        <span class="editable" data-key="about_description">Aonsectetur adipiscing elit aenean scelerisque augue vitae consequat aisque eget congue
+                        velit in cursus sodales the turpis euismod quis sapien euismod quis sapien the condimentum nec lorem nulla augue.</span>
+                    </p>
                 </div>
                 <div class="row g-4 wow fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
                     <div class="col-md-6">
@@ -44,8 +43,12 @@
                                 <img src="assets/frontend/images/icon/about-icon1.png" alt="icon">
                             </div>
                             <div class="content">
-                                <h4 class="mb-1">Best Services</h4>
-                                <p>Scelerisque augue the consequat sodales</p>
+                                <h4 class="mb-1">
+                                    <span class="editable" data-key="service1_title">Best Services</span>
+                                </h4>
+                                <p>
+                                    <span class="editable" data-key="service1_description">Scelerisque augue the consequat sodales</span>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -55,8 +58,12 @@
                                 <img src="assets/frontend/images/icon/about-icon2.png" alt="icon">
                             </div>
                             <div class="content">
-                                <h4 class="mb-1">24/7 Call Support</h4>
-                                <p>Scelerisque augue the consequat sodales</p>
+                                <h4 class="mb-1">
+                                    <span class="editable" data-key="service2_title">24/7 Call Support</span>
+                                </h4>
+                                <p>
+                                    <span class="editable" data-key="service2_description">Scelerisque augue the consequat sodales</span>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -66,8 +73,12 @@
                     <div class="d-flex gap-2 align-items-center">
                         <img src="assets/frontend/images/about/about-info.png" alt="image">
                         <div class="info">
-                            <h5>Ronald Richards</h5>
-                            <span class="sm-font">Co, Founder</span>
+                            <h5>
+                                <span class="editable" data-key="founder_name">Ronald Richards</span>
+                            </h5>
+                            <span class="sm-font">
+                                <span class="editable" data-key="founder_role">Co, Founder</span>
+                            </span>
                         </div>
                     </div>
                 </div>

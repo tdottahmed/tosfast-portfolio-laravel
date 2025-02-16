@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ getSetting('app_name') }}</title>
     <!-- Favicon img -->
     <link rel="shortcut icon" href="assets/frontend/images/favicon.png">
@@ -105,6 +106,104 @@
     <script src="assets/frontend/js/jquery.waypoints.js"></script>
     <!-- Script Js -->
     <script src="assets/frontend/js/script.js"></script>
+    <!-- Add SweetAlert CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('super-admin')))
+        <script>
+            $(document).ready(function() {
+                $(document).on("click", ".editable", function() {
+                    let $this = $(this);
+                    let text = $this.text().trim();
+                    let key = $this.data("key");
+
+                    let textarea = $("<textarea>", {
+                        class: "form-control d-inline-block w-100",
+                        text: text,
+                        "data-key": key
+                    });
+
+                    let checkIcon = $("<i>", {
+                        class: "fa-solid fa-check text-success ms-2 cursor-pointer check-icon"
+                    });
+
+                    $this.replaceWith(textarea);
+                    textarea.after(checkIcon);
+                    textarea.focus();
+                });
+
+                $(document).on("click", ".check-icon", function() {
+                    let textarea = $(this).prev("textarea");
+                    let checkIcon = $(this);
+                    if (textarea.length && checkIcon.length) {
+                        saveContent(textarea, checkIcon);
+                    } else {
+                        console.error("Textarea or check icon not found!");
+                    }
+                });
+
+                function saveContent(textarea, checkIcon) {
+                    let newText = textarea.val().trim();
+                    let key = textarea.data("key");
+
+                    $.ajax({
+                        url: "/update-content",
+                        type: "POST",
+                        data: {
+                            key: key,
+                            content: newText
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                'content')
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                revertToText(textarea, checkIcon, newText);
+                                Swal.fire({
+                                    title: "Success!",
+                                    text: "Content updated successfully.",
+                                    icon: "success",
+                                    timer: 1500,
+                                    showConfirmButton: false
+                                });
+                            } else {
+                                alert("Failed to update content.");
+                            }
+                        },
+                        error: function() {
+                            alert("Error saving content.");
+                        }
+                    });
+                }
+
+                function revertToText(textarea, checkIcon, text) {
+                    let span = $("<span>", {
+                        class: "editable",
+                        "data-key": textarea.data("key"),
+                        text: text
+                    });
+
+                    checkIcon.remove();
+                    textarea.replaceWith(span);
+                }
+
+
+            });
+        </script>
+    @endif
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: "/get-content",
+                type: "GET",
+                success: function(response) {
+                    response.data.forEach(item => {
+                        $(`[data-key="${item.key}"]`).text(item.content);
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 

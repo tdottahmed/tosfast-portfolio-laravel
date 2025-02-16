@@ -1,15 +1,16 @@
 @props([])
 @php
-    $atr = $attributes;
-    $id = $atr->get('id') ?? uniqid('editor-');
+    $attributes = $attributes->merge(['id' => $attributes->get('id') ?? uniqid('editor-')]);
+    $id = $attributes->get('id');
 @endphp
 
-<textarea name="{{ $atr->get('name') }}" id="{{ $id }}-content" style="display: none">
-{!! $slot !!}</textarea
->
-<textarea {{ $atr->except('name')->merge([
-    'id' => $id,
-]) }}>{!! $slot !!}</textarea>
+<!-- Hidden textarea to store the content -->
+<textarea name="{{ $attributes->get('name') }}" id="{{ $id }}-content" style="display: none">
+    {!! $slot !!}
+</textarea>
+
+<!-- Visible textarea for TinyMCE initialization -->
+<textarea {{ $attributes->except('name') }}>{!! $slot !!}</textarea>
 
 @pushOnce('styles')
     <style>
@@ -45,7 +46,6 @@
             float: right;
         }
 
-        /* Basic styles for Table of Contents plugin (tableofcontents) */
         .mce-toc {
             border: 1px solid gray;
         }
@@ -70,63 +70,58 @@
 
 @pushOnce('scripts')
     <script>
-        $(document).ready(function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
-            let useDarkMode = $('html').data('bs-theme') == 'dark';
+            const useDarkMode = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+
             tinymce.init({
                 selector: '#{{ $id }}',
                 setup: (editor) => {
-                    editor.on('change', function(e) {
-                        $('#{{ $id }}-content').html(editor.getContent());
+                    // Sync content with the hidden textarea on change
+                    editor.on('change', function() {
+                        document.getElementById('{{ $id }}-content').value = editor
+                            .getContent();
                     });
-                },
-                init_instance_callback: function(editor) {
-                    editor.focus();
-                    // editor.setContent('..');
+
+                    // Initialize with the content from the hidden textarea
+                    editor.on('init', function() {
+                        editor.setContent(document.getElementById('{{ $id }}-content')
+                            .value);
+                    });
                 },
                 plugins: 'preview searchreplace autolink save directionality code visualchars fullscreen image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons accordion',
                 editimage_cors_hosts: ['picsum.photos'],
                 menubar: true,
-                toolbar: `undo redo |
-             link media image table|
-             bold italic underline strikethrough removeformat |
-            forecolor backcolor  |
-            numlist bullist  |
-            blocks fontsize |
-            align lineheight outdent indent |
-            ltr rtl |
-            charmap emoticons | codesample preview | insertdatetime searchreplace
-            `,
+                toolbar: `undo redo | link media image table | bold italic underline strikethrough removeformat | forecolor backcolor | numlist bullist | blocks fontsize | align lineheight outdent indent | ltr rtl | charmap emoticons | codesample preview | insertdatetime searchreplace`,
                 toolbar_sticky: false,
                 images_file_types: 'jpg,jpeg,gif,png,svg,webp',
                 file_picker_types: 'file image media',
-
                 image_advtab: true,
                 link_list: [{
                         title: 'My page 1',
-                        value: 'https://www.tiny.cloud',
+                        value: 'https://www.tiny.cloud'
                     },
                     {
                         title: 'My page 2',
-                        value: 'http://www.moxiecode.com',
+                        value: 'http://www.moxiecode.com'
                     },
                 ],
                 image_list: [{
                         title: 'My page 1',
-                        value: 'https://www.tiny.cloud',
+                        value: 'https://www.tiny.cloud'
                     },
                     {
                         title: 'My page 2',
-                        value: 'http://www.moxiecode.com',
+                        value: 'http://www.moxiecode.com'
                     },
                 ],
                 image_class_list: [{
                         title: 'None',
-                        value: '',
+                        value: ''
                     },
                     {
                         title: 'Some class',
-                        value: 'class-name',
+                        value: 'class-name'
                     },
                 ],
                 importcss_append: true,
@@ -138,14 +133,9 @@
 
                     input.addEventListener('change', (e) => {
                         const file = e.target.files[0];
-
                         const reader = new FileReader();
+
                         reader.addEventListener('load', () => {
-                            /*
-                              Note: Now we need to register the blob in TinyMCEs image blob
-                              registry. In the next release this part hopefully won't be
-                              necessary, as we are looking to handle it internally.
-                            */
                             const id = 'blobid' + new Date().getTime();
                             const blobCache = tinymce.activeEditor.editorUpload
                                 .blobCache;
@@ -153,11 +143,11 @@
                             const blobInfo = blobCache.create(id, file, base64);
                             blobCache.add(blobInfo);
 
-                            /* call the callback and populate the Title field with the file name */
                             cb(blobInfo.blobUri(), {
-                                title: file.name,
+                                title: file.name
                             });
                         });
+
                         reader.readAsDataURL(file);
                     });
 
