@@ -37,16 +37,25 @@
                     <div class="slide-bg" data-background="{{ getFilePath($banner->image) }}"></div>
                     <div class="container">
                         <div class="banner__content">
-
-                            <h1 data-animation="slideInRight" data-duration="2s" data-delay=".5s"
-                                class="text-white editable">
+                            <h4 data-animation="slideInRight" data-duration="2s" data-delay=".3s"
+                                class="text-white mb-20">
+                                <svg class="me-1" width="40" height="16" viewBox="0 0 40 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="0.5" y="0.500183" width="25.6667" height="15" rx="7.5"
+                                        stroke="white" />
+                                    <rect x="13.3334" y="0.000183105" width="26.6667" height="16" rx="8"
+                                        fill="white" />
+                                </svg>
+                                Tosfast IT SOULTION Provider
+                            </h4>
+                            <h1 data-animation="slideInRight" data-duration="2s" data-delay=".5s" class="text-white">
                                 {{ $banner->title }}
                             </h1>
                             <p data-animation="slideInRight" data-duration="2s" data-delay=".7s" class="mt-20">
                                 {{ $banner->description }}
                             </p>
                             <a href="{{ route('frontend.contact') }}" data-animation="slideInRight" data-duration="2s"
-                                data-delay=".9s" href="about.html" class="btn-one mt-60">Explore
+                                data-delay=".9s" class="btn-one mt-60">Explore
                                 More <i class="fa-regular fa-arrow-right-long"></i></a>
                         </div>
                     </div>

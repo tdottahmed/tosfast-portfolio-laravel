@@ -2,13 +2,14 @@
     <div class="container header__container">
         <div class="header__main">
             <a href="{{ route('frontend.home') }}" class="logo">
-                <img src="{{ getSetting('light_logo') }}" alt="logo">
+                <img src="{{ getFilePath(getSetting('light_logo')) }}" alt="logo">
             </a>
             <div class="main-menu">
                 <nav>
                     <ul>
                         <li><a href="{{ route('frontend.home') }}">Home</a></li>
                         <li><a href="{{ route('frontend.about') }}">About</a></li>
+                        <li><a href="{{ route('frontend.products') }}">Products</a></li>
                         <li><a href="{{ route('frontend.service') }}">Services</a></li>
                         <li><a href="{{ route('frontend.blog') }}">Blog</a></li>
                         <li><a href="{{ route('frontend.contact') }}">Contact</a></li>

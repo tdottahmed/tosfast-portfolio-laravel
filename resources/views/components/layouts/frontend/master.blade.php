@@ -8,36 +8,38 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ getSetting('app_name') }}</title>
     <!-- Favicon img -->
-    <link rel="shortcut icon" href="assets/frontend/images/favicon.png">
+    <link rel="shortcut icon" href="{{ asset('assets/frontend/images/favicon.png') }}">
     <!-- Bootstarp min css -->
-    <link rel="stylesheet" href="assets/frontend/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
     <!-- Mean menu css -->
-    <link rel="stylesheet" href="assets/frontend/css/meanmenu.css">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/meanmenu.css') }}">
     <!-- All min css -->
-    <link rel="stylesheet" href="assets/frontend/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/all.min.css') }}">
     <!-- Swiper bundle min css -->
-    <link rel="stylesheet" href="assets/frontend/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/swiper-bundle.min.css') }}">
     <!-- Magnigic popup css -->
-    <link rel="stylesheet" href="assets/frontend/css/magnific-popup.css">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/magnific-popup.css') }}">
     <!-- Animate css -->
-    <link rel="stylesheet" href="assets/frontend/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/animate.css') }}">
     <!-- Nice select css -->
-    <link rel="stylesheet" href="assets/frontend/css/nice-select.css">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/nice-select.css') }}">
     <!-- Style css -->
-    <link rel="stylesheet" href="assets/frontend/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
+    @stack('styles')
 </head>
 
 <body>
 
     <!-- Preloader area start -->
     <div class="loading">
-        <span class="text-capitalize">L</span>
-        <span>o</span>
-        <span>a</span>
-        <span>d</span>
-        <span>i</span>
-        <span>n</span>
-        <span>g</span>
+        <span class="text-capitalize">T</span>
+        <span class="text-capitalize">o</span>
+        <span class="text-capitalize">s</span>
+        <span class="text-capitalize">f</span>
+        <span class="text-capitalize">a</span>
+        <span class="text-capitalize">s</span>
+        <span class="text-capitalize">t</span>
+
     </div>
     <div id="preloader">
     </div>
@@ -83,29 +85,29 @@
     <!-- Back to top area end here -->
 
     <!-- Jquery 3.7.0 Min Js -->
-    <script src="assets/frontend/js/jquery-3.7.1.min.js"></script>
+    <script src="{{ asset('assets/frontend/js/jquery-3.7.1.min.js') }}"></script>
     <!-- Bootstrap min Js -->
-    <script src="assets/frontend/js/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
     <!-- Mean menu Js -->
-    <script src="assets/frontend/js/meanmenu.js"></script>
+    <script src="{{ asset('assets/frontend/js/meanmenu.js') }}"></script>
     <!-- Swiper bundle min Js -->
-    <script src="assets/frontend/js/swiper-bundle.min.js"></script>
+    <script src="{{ asset('assets/frontend/js/swiper-bundle.min.js') }}"></script>
     <!-- Counterup min Js -->
-    <script src="assets/frontend/js/jquery.counterup.min.js"></script>
+    <script src="{{ asset('assets/frontend/js/jquery.counterup.min.js') }}"></script>
     <!-- Wow min Js -->
-    <script src="assets/frontend/js/wow.min.js"></script>
+    <script src="{{ asset('assets/frontend/js/wow.min.js') }}"></script>
     <!-- Pace min Js -->
-    <script src="assets/frontend/js/pace.min.js"></script>
+    <script src="{{ asset('assets/frontend/js/pace.min.js') }}"></script>
     <!-- Magnific popup min Js -->
-    <script src="assets/frontend/js/magnific-popup.min.js"></script>
+    <script src="{{ asset('assets/frontend/js/magnific-popup.min.js') }}"></script>
     <!-- Nice select min Js -->
-    <script src="assets/frontend/js/nice-select.min.js"></script>
+    <script src="{{ asset('assets/frontend/js/jquery.nice-select.min.js') }}"></script>
     <!-- Isotope pkgd min Js -->
-    <script src="assets/frontend/js/isotope.pkgd.min.js"></script>
+    <script src="{{ asset('assets/frontend/js/isotope.pkgd.min.js') }}"></script>
     <!-- Waypoints Js -->
-    <script src="assets/frontend/js/jquery.waypoints.js"></script>
+    <script src="{{ asset('assets/frontend/js/jquery.waypoints.js') }}"></script>
     <!-- Script Js -->
-    <script src="assets/frontend/js/script.js"></script>
+    <script src="{{ asset('assets/frontend/js/script.js') }}"></script>
     <!-- Add SweetAlert CSS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if (auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('super-admin')))

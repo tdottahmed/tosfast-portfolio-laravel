@@ -4,29 +4,24 @@
     <!-- Banner area end here -->
 
     <!-- Service area start here -->
-    @include('frontend.landing.partials.service-area')
+    @include('frontend.landing.partials.service-area', compact('services'))
     <!-- Service area end here -->
+
+    <!-- Case area start here -->
+    @include('frontend.landing.partials.case-area', compact('products'))
+    <!-- Case area end here -->
 
     <!-- About area start here -->
     @include('frontend.landing.partials.about-area')
     <!-- About area end here -->
 
-    <!-- Counter area start here -->
-    @include('frontend.landing.partials.counter-area')
-    <!-- Counter area end here -->
-
-    <!-- Case area start here -->
-    @include('frontend.landing.partials.case-area')
-    <!-- Case area end here -->
-
     <!-- Offer area start here -->
     @include('frontend.landing.partials.offer-area')
     <!-- Offer area end here -->
 
-    <!-- Brand area start here -->
-    @include('frontend.landing.partials.brand-area')
-    <!-- Brand area end here -->
-
+    <!-- Counter area start here -->
+    @include('frontend.landing.partials.counter-area')
+    <!-- Counter area end here -->
     <!-- Process area start here -->
     @include('frontend.landing.partials.process-area')
     <!-- Process area end here -->

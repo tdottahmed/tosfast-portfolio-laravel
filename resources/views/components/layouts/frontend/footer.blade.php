@@ -1,24 +1,24 @@
 <footer class="footer-area secondary-bg">
     <div class="footer__shape-regular-left wow slideInLeft" data-wow-delay="00ms" data-wow-duration="1500ms">
-        <img src="assets/frontend/images/shape/footer-regular-left.png" alt="shape">
+        <img src="{{asset('assets/frontend/images/shape/footer-regular-left.png')}}" alt="shape">
     </div>
     <div class="footer__shape-solid-left wow slideInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">
-        <img class="sway_Y__animation" src="assets/frontend/images/shape/footer-solid-left.png" alt="shape">
+        <img class="sway_Y__animation" src="{{asset('assets/frontend/images/shape/footer-solid-left.png')}}" alt="shape">
     </div>
     <div class="footer__shape-solid-right wow slideInRight" data-wow-delay="00ms" data-wow-duration="1500ms">
-        <img class="sway_Y__animation" src="assets/frontend/images/shape/footer-regular-right.png" alt="shape">
+        <img class="sway_Y__animation" src="{{asset('assets/frontend/images/shape/footer-regular-right.png')}}" alt="shape">
     </div>
     <div class="footer__shape-regular-right wow slideInRight" data-wow-delay="200ms" data-wow-duration="1500ms">
-        <img src="assets/frontend/images/shape/footer-solid-right.png" alt="shape">
+        <img src="{{asset('assets/frontend/images/shape/footer-solid-right.png')}}" alt="shape">
     </div>
     <div class="footer__shadow-shape">
-        <img src="assets/frontend/images/shape/footer-shadow-shape.png" alt="shodow">
+        <img src="{{asset('assets/frontend/images/shape/footer-shadow-shape.png')}}" alt="shodow">
     </div>
     <div class="container">
         <div class="footer__wrp pt-100 pb-100">
             <div class="footer__item item-big wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                 <a href="index.html" class="logo mb-30">
-                    <img src="assets/frontend/images/logo/logo.svg" alt="image">
+                    <img src="{{getFilePath(getSetting('light_logo'))}}" alt="image">
                 </a>
                 <p>Phasellus ultricies aliquam volutpat
                     ullamcorper laoreet neque, a lacinia

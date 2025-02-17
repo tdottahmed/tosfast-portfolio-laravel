@@ -1,7 +1,14 @@
-<section class="about-area sub-bg pt-120">
-    <div class="about__shape wow slideInLeft" data-wow-delay="400ms" data-wow-duration="1500ms">
-        <img src="assets/frontend/images/shape/about-line.png" alt="shape">
-    </div>
+@push('styles')
+    <style>
+        .about-area,
+        .about-two-area {
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 115px !important;
+        }
+    </style>
+@endpush
+<section class="about-area sub-bg" style="padding-bottom: 115px;">
     <div class="container">
         <div class="row g-4">
             <div class="col-xl-6 wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1500ms">
@@ -12,7 +19,8 @@
                     <div class="image sm-image">
                         <div class="video__btn-wrp">
                             <div class="video-btn video-pulse">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=iVqz_4M5mA0"><i class="fa-solid fa-play"></i></a>
+                                <a class="video-popup" href="https://www.youtube.com/watch?v=iVqz_4M5mA0"><i
+                                        class="fa-solid fa-play"></i></a>
                             </div>
                         </div>
                         <img src="assets/frontend/images/about/about-image2.png" alt="image">
@@ -29,11 +37,14 @@
                         <span class="editable" data-key="about_title">ABOUT Gratech</span>
                     </h5>
                     <h2 class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
-                        <span class="editable" data-key="about_heading">We Strive to Offer Intelligent Business Solutions</span>
+                        <span class="editable" data-key="about_heading">We Strive to Offer Intelligent Business
+                            Solutions</span>
                     </h2>
                     <p class="wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
-                        <span class="editable" data-key="about_description">Aonsectetur adipiscing elit aenean scelerisque augue vitae consequat aisque eget congue
-                        velit in cursus sodales the turpis euismod quis sapien euismod quis sapien the condimentum nec lorem nulla augue.</span>
+                        <span class="editable" data-key="about_description">Aonsectetur adipiscing elit aenean
+                            scelerisque augue vitae consequat aisque eget congue
+                            velit in cursus sodales the turpis euismod quis sapien euismod quis sapien the condimentum
+                            nec lorem nulla augue.</span>
                     </p>
                 </div>
                 <div class="row g-4 wow fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
@@ -47,7 +58,8 @@
                                     <span class="editable" data-key="service1_title">Best Services</span>
                                 </h4>
                                 <p>
-                                    <span class="editable" data-key="service1_description">Scelerisque augue the consequat sodales</span>
+                                    <span class="editable" data-key="service1_description">Scelerisque augue the
+                                        consequat sodales</span>
                                 </p>
                             </div>
                         </div>
@@ -62,7 +74,8 @@
                                     <span class="editable" data-key="service2_title">24/7 Call Support</span>
                                 </h4>
                                 <p>
-                                    <span class="editable" data-key="service2_description">Scelerisque augue the consequat sodales</span>
+                                    <span class="editable" data-key="service2_description">Scelerisque augue the
+                                        consequat sodales</span>
                                 </p>
                             </div>
                         </div>

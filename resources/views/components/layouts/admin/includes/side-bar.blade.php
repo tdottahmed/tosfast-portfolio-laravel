@@ -7,7 +7,7 @@
                 <img src="{{ getFilePath(getSetting('app_favicon')) }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ getFilePath(getSetting('dark_logo')) }}" alt="" height="55">
+                <img src="{{ getFilePath(getSetting('light_logo')) }}" alt="" height="55">
             </span>
         </a>
         <!-- Light Logo-->
@@ -16,7 +16,7 @@
                 <img src="{{ getFilePath(getSetting('app_favicon')) }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ getFilePath(getSetting('light_logo')) }}" alt="" height="55" width="100%">
+                <img src="{{ getFilePath(getSetting('dark_logo')) }}" alt="" height="55" width="100%">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -42,9 +42,9 @@
                 <x-layouts.admin.partials.sidebar-menu-item route="teams.index" icon="ri-group-line" label="Teams" />
                 <x-layouts.admin.partials.sidebar-menu-item route="testimonials.index" icon="ri-chat-quote-line"
                     label="Testimonials" />
+                <x-layouts.admin.partials.sidebar-menu-item route="technologies.index" icon="ri-code-line"
+                    label="Technologies" />
                 <x-layouts.admin.partials.sidebar-menu-item route="blogs.index" icon="ri-news-line" label="Blogs" />
-
-
                 <x-layouts.admin.partials.sidebar-menu-item route="roles.index" icon="ri-user-2-line"
                     label="Users Management" :dropdown-routes="[
                         'roles.index' => 'Roles',
@@ -53,7 +53,6 @@
                     ]" />
                 <x-layouts.admin.partials.sidebar-menu-item route="notes.index" icon="ri-file-list-3-line"
                     label="Notes" />
-
                 <x-layouts.admin.partials.sidebar-menu-item route="applicationSetup.index" icon="ri-settings-3-line"
                     label="Application Setup" />
             </ul>
