@@ -7,7 +7,7 @@
                 <img src="{{ getFilePath(getSetting('app_favicon')) }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ getFilePath(getSetting('light_logo')) }}" alt="" height="55">
+                <img src="{{ getFilePath(getSetting('app_logo')) }}" alt="" height="55">
             </span>
         </a>
         <!-- Light Logo-->
@@ -16,7 +16,7 @@
                 <img src="{{ getFilePath(getSetting('app_favicon')) }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ getFilePath(getSetting('dark_logo')) }}" alt="" height="55" width="100%">
+                <img src="{{ getFilePath(getSetting('app_logo')) }}" alt="" height="55" width="100%">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"

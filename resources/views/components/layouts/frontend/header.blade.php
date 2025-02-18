@@ -2,7 +2,7 @@
     <div class="container header__container">
         <div class="header__main">
             <a href="{{ route('frontend.home') }}" class="logo">
-                <img src="{{ getFilePath(getSetting('light_logo')) }}" alt="logo">
+                <img src="{{ getFilePath(getSetting('app_logo')) }}" alt="logo">
             </a>
             <div class="main-menu">
                 <nav>
