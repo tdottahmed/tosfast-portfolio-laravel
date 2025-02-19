@@ -19,7 +19,6 @@ class TrackUserVisits
     {
         $ipAddress = $request->ip();
 
-        // Handle localhost case
         if ($ipAddress === '127.0.0.1' || $ipAddress === '::1') {
             $location = (object) [
                 'country' => 'Localhost',
@@ -31,16 +30,18 @@ class TrackUserVisits
         } else {
             $location = GeoIP::getLocation($ipAddress);
         }
-        // Ensure valid data before inserting into database
-        UserVisit::create([
-            'ip_address' => $location->ip,
-            'country' => $location->country ?? 'Unknown',
-            'region' => $location->state_name ?? 'Unknown',
-            'city' => $location->city ?? 'Unknown',
-            'latitude' => $location->lat ?? 0.0000,
-            'longitude' => $location->lon ?? 0.0000,
-            'visited_at' => now(),
-        ]);
+        UserVisit::updateOrCreate(
+            ['ip_address' => $ipAddress], // Unique condition
+            [
+                'iso_code' => $location->iso_code ?? 'Unknown',
+                'country' => $location->country ?? 'Unknown',
+                'city' => $location->city ?? 'Unknown',
+                'latitude' => $location->lat ?? 0.0000,
+                'longitude' => $location->lon ?? 0.0000,
+                'postal_code' => $location->postal_code ?? 0,
+                'visited_at' => now(),
+            ]
+        )->increment('visits');
 
         return $next($request);
     }

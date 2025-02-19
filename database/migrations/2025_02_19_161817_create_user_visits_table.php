@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('ip_address');
             $table->string('country')->nullable();
-            $table->string('region')->nullable();
+            $table->string('iso_code')->nullable();
             $table->string('city')->nullable();
             $table->decimal('latitude', 10, 7)->nullable();
             $table->decimal('longitude', 10, 7)->nullable();
+            $table->integer('postal_code')->nullable();
+            $table->integer('visits')->default(1);
             $table->timestamp('visited_at');
             $table->timestamps();
         });
