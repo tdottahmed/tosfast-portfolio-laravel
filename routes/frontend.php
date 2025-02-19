@@ -3,7 +3,7 @@
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('frontend.home');
+Route::get('/', [HomeController::class, 'index'])->name('frontend.home')->middleware('usersVisited');
 Route::get('/service', [HomeController::class, 'service'])->name('frontend.service');
 Route::get('/service/{service}', [HomeController::class, 'serviceSingle'])->name('frontend.serviceSingle');
 Route::get('/about', [HomeController::class, 'about'])->name('frontend.about');
