@@ -30,7 +30,6 @@ class TrackUserVisits
         } else {
             $location = GeoIP::getLocation($ipAddress);
         }
-
         UserVisit::updateOrCreate(
             ['ip_address' => $ipAddress], // Unique condition
             [
