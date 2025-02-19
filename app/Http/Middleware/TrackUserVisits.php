@@ -31,12 +31,11 @@ class TrackUserVisits
         } else {
             $location = GeoIP::getLocation($ipAddress);
         }
-
         // Ensure valid data before inserting into database
         UserVisit::create([
-            'ip_address' => $ipAddress,
+            'ip_address' => $location->ip,
             'country' => $location->country ?? 'Unknown',
-            'region' => $location->region ?? 'Unknown',
+            'region' => $location->state_name ?? 'Unknown',
             'city' => $location->city ?? 'Unknown',
             'latitude' => $location->lat ?? 0.0000,
             'longitude' => $location->lon ?? 0.0000,

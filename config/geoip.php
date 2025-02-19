@@ -102,30 +102,10 @@ return [
     |
     */
 
-    'cache' => 'all',
+    'cache' => 'none', // Disable caching
+    'cache_tags' => [], // Remove cache tags
+    'cache_expires' => 0, // Disable expiration
 
-    /*
-    |--------------------------------------------------------------------------
-    | Cache Tags
-    |--------------------------------------------------------------------------
-    |
-    | Cache tags are not supported when using the file or database cache
-    | drivers in Laravel. This is done so that only locations can be cleared.
-    |
-    */
-
-    'cache_tags' => ['torann-geoip-location'],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Cache Expiration
-    |--------------------------------------------------------------------------
-    |
-    | Define how long cached location are valid.
-    |
-    */
-
-    'cache_expires' => 30,
 
     /*
     |--------------------------------------------------------------------------
