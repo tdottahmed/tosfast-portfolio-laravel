@@ -153,3 +153,20 @@ return [
     ],
 
 ];
+
+ #attributes: array:14 [▼
+//  "ip" => "118.179.116.161"
+//  "iso_code" => "BD"
+//  "country" => "Bangladesh"
+//  "city" => "Dhaka"
+//  "state" => "13"
+//  "state_name" => "Dhaka"
+//  "postal_code" => "1212"
+//  "lat" => 23.7891
+//  "lon" => 90.4126
+//  "timezone" => "Asia/Dhaka"
+//  "continent" => "AS"
+//  "localizations" => array:1 [▶]
+//  "currency" => "BDT"
+//  "default" => false
+// ]
