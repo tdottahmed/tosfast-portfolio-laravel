@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use App\Models\ApplicationSetup;
 use Illuminate\Support\Facades\Storage;
 
@@ -88,5 +89,20 @@ if (!function_exists('getSetting')) {
     {
         $setting = ApplicationSetup::where('type', $name)->first();
         return $setting ? $setting->value : '';
+    }
+}
+
+if (!function_exists('formatTimestamp')) {
+
+    function formatTimestamp($timestamp, $format = 'j M, Y g:i A')
+    {
+        if (!$timestamp) {
+            return 'N/A';
+        }
+
+        // Ensure the timestamp is a Carbon instance
+        $date = $timestamp instanceof Carbon ? $timestamp : Carbon::parse($timestamp);
+
+        return $date->format($format);
     }
 }

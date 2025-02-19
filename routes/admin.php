@@ -26,6 +26,7 @@ Route::prefix('admin')->middleware(['role:super-admin|admin|staff|user'])->group
         ->name('applicationSetup.index');
     Route::post('settings/organization', [ApplicationSetupController::class, 'update'])
         ->name('applicationSetup.update');
+    Route::get('visitors', [DashboardController::class, 'visitors'])->name('dashboard.visitors');
 
     // content management
     Route::resource('banners', BannerController::class);

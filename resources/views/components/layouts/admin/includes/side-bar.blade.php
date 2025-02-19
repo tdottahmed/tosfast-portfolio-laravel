@@ -33,6 +33,8 @@
                 <x-layouts.admin.partials.sidebar-menu-item route="dashboard" icon="ri-dashboard-line"
                     label="Dashboard" />
 
+                <x-layouts.admin.partials.sidebar-menu-item route="dashboard.visitors" icon="ri-eye-line"
+                    label="Visitors" />
                 <x-layouts.admin.partials.sidebar-menu-item route="banners.index" icon="ri-image-line"
                     label="Banners" />
                 <x-layouts.admin.partials.sidebar-menu-item route="services.index" icon="ri-building-line"
