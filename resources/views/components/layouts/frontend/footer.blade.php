@@ -22,9 +22,10 @@
                 <a href="index.html" class="logo mb-30">
                     <img src="{{ getFilePath(getSetting('app_logo')) }}" alt="image">
                 </a>
-                <p>Phasellus ultricies aliquam volutpat
-                    ullamcorper laoreet neque, a lacinia
-                    curabitur lacinia mollis</p>
+                <p>Tosfast is a cutting-edge tech company specializing in business IT solutions. We empower businesses
+                    with innovative software development, cloud solutions, and digital transformation services.At
+                    Tosfast, we combine technology with strategy to drive
+                    efficiency, security, and success.</p>
                 <div class="social-icon">
                     <a href="#0"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="#0"><i class="fa-brands fa-twitter"></i></a>
@@ -35,39 +36,40 @@
             <div class="footer__item item-sm wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
                 <h3 class="footer-title">IT Solution</h3>
                 <ul>
-                    <li><a href="service-details.html"><i class="fa-regular fa-angles-right me-1"></i> IT
+                    <li><a href="{{ route('frontend.service') }}"><i class="fa-regular fa-angles-right me-1"></i> IT
                             Management</a></li>
-                    <li><a href="service-details.html"><i class="fa-regular fa-angles-right me-1"></i> SEO
+                    <li><a href="{{ route('frontend.service') }}"><i class="fa-regular fa-angles-right me-1"></i> SEO
                             Optimization</a>
                     </li>
-                    <li><a href="service-details.html"><i class="fa-regular fa-angles-right me-1"></i> Web
+                    <li><a href="{{ route('frontend.service') }}"><i class="fa-regular fa-angles-right me-1"></i> Web
                             Development</a>
                     </li>
-                    <li><a href="service-details.html"><i class="fa-regular fa-angles-right me-1"></i> Cyber
+                    <li><a href="{{ route('frontend.service') }}"><i class="fa-regular fa-angles-right me-1"></i> Cyber
                             Security</a></li>
-                    <li><a href="service-details.html"><i class="fa-regular fa-angles-right me-1"></i> Data
+                    <li><a href="{{ route('frontend.service') }}"><i class="fa-regular fa-angles-right me-1"></i> Data
                             Security</a></li>
                 </ul>
             </div>
             <div class="footer__item item-sm wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
                 <h3 class="footer-title">Quick Link</h3>
                 <ul>
-                    <li><a href="about.html"><i class="fa-regular fa-angles-right me-1"></i> About Gratech</a>
+                    <li><a href="{{ route('frontend.about') }}"><i class="fa-regular fa-angles-right me-1"></i> About
+                            Gratech</a>
                     </li>
-                    <li><a href="service.html"><i class="fa-regular fa-angles-right me-1"></i> Our
+                    <li><a href="{{ route('frontend.service') }}"><i class="fa-regular fa-angles-right me-1"></i> Our
                             Services</a>
                     </li>
-                    <li><a href="pricing.html"><i class="fa-regular fa-angles-right me-1"></i> Pricing
-                            Plan</a>
+
+                    <li><a href="{{ route('frontend.products') }}"><i class="fa-regular fa-angles-right me-1"></i> Our
+                            Projects</a>
                     </li>
-                    <li><a href="case.html"><i class="fa-regular fa-angles-right me-1"></i> Our Projects</a>
-                    </li>
-                    <li><a href="team.html"><i class="fa-regular fa-angles-right me-1"></i> Our Team</a></li>
+                    <li><a href="{{ route('frontend.about') }}"><i class="fa-regular fa-angles-right me-1"></i> Our
+                            Team</a></li>
                 </ul>
             </div>
             <div class="footer__item item-big wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
                 <h3 class="footer-title">Contact Us</h3>
-                <p class="mb-20">4517 Washington Ave. Manchester, Kentucky 39495</p>
+                <p class="mb-20">Mawna Chowrasta, Gazipur, Dhaka, Bangladesh</p>
                 <ul class="footer-contact">
                     <li>
                         <i class="fa-regular fa-clock"></i>
@@ -84,7 +86,7 @@
                             <h5>
                                 Phone Call:
                             </h5>
-                            <p>208-6666-0112, 308-5555-0113</p>
+                            <p>+8801876525073,+8801921189005</p>
                         </div>
                     </li>
                 </ul>
@@ -93,15 +95,9 @@
     </div>
     <div class="footer__copyright">
         <div class="container">
-            <div class="d-flex gap-1 flex-wrap align-items-center justify-content-md-between justify-content-center">
-                <p class="wow fadeInDown" data-wow-delay="00ms" data-wow-duration="1500ms">&copy; All
-                    Copyright 2024
-                    by <a href="#0">Gratech</a></p>
-                <ul class="d-flex align-items-center gap-4 wow fadeInDown" data-wow-delay="200ms"
-                    data-wow-duration="1500ms">
-                    <li><a href="#0">Terms & Condition</a></li>
-                    <li><a href="#0">Privacy Policy</a></li>
-                </ul>
+            <div class="d-flex gap-1 flex-wrap align-items-center justify-content-center">
+                <p class="wow fadeInDown text-center" data-wow-delay="00ms" data-wow-duration="1500ms">&copy; All
+                    Right Reserved {{ now()->year }} by <a href="/" class="text-danger">Tosfast</a></p>
             </div>
         </div>
     </div>

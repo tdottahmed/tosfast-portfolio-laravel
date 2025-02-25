@@ -15,30 +15,27 @@
                         </h5>
                         <h2 class="text-white">How May We Help You!</h2>
                     </div>
-                    <form action="#">
-                        <div class="row g-3">
-                            <div class="col-sm-6">
-                                <label for="name">Your name*</label>
-                                <input type="text" id="name" value="Robot fox">
+                    <form action="{{ route('frontend.sendEmail') }}" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="name">Your Name*</label>
+                                <input id="name" name="name" type="text" placeholder="Your Name">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-6">
                                 <label for="email">Your Email*</label>
-                                <input type="email" id="email" value="info@example.com">
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="subject">subject*</label>
-                                <input type="text" id="subject" value="Subject">
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="number">Your Phone*</label>
-                                <input type="text" id="number" value="+1253 457 7840">
-                            </div>
-                            <div class="col-12">
-                                <label for="massage">Message*</label>
-                                <textarea id="massage" placeholder="Write Message"></textarea>
+                                <input id="email" name="email" type="email" placeholder="Your Email">
                             </div>
                         </div>
-                        <button>Sand Message</button>
+                        <div class="col-12">
+                            <label for="subject">Subject*</label>
+                            <input id="subject" name="subject" type="text" placeholder="Subject">
+                        </div>
+                        <div class="text-area">
+                            <label for="massage">Write Message*</label>
+                            <textarea name="message" id="massage" placeholder="Write Message"></textarea>
+                        </div>
+                        <button type="submit">Sand Message</button>
                     </form>
                 </div>
             </div>
@@ -51,10 +48,9 @@
                     <h2 class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">What They
                         Say
                         About Our</h2>
-                    <p class="wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">It is a long
-                        established fact that a reader will be distracted the readable content
-                        of a page when looking at layout the
-                        point of using lorem the is Ipsum less normal distribution of letters.</p>
+                    <p class="wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">Have a project in mind or
+                        need expert IT solutions for your business? We’re here to help! Contact Tosfast for innovative
+                        technology solutions tailored to your needs.</p>
                 </div>
                 <div class="swiper testimonial__slider wow fadeInDown" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="swiper-wrapper">

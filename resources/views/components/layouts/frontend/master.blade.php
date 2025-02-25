@@ -6,7 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ getSetting('app_name') }}</title>
+
+    <title>Tosfast - Business IT Solutions</title>
+    <meta name="description"
+        content="Tosfast provides innovative business IT solutions, including web development, cloud solutions, and enterprise software to drive digital transformation.">
+    <meta name="keywords"
+        content="Tosfast, IT solutions, business technology, web development, cloud services, enterprise software">
+    <meta name="author" content="Tosfast Tech Solutions">
+
+    <!-- Open Graph Meta Tags (For Social Media) -->
+    <meta property="og:title" content="Tosfast - Business IT Solutions">
+    <meta property="og:description"
+        content="We offer cutting-edge IT solutions for businesses, including software development, cloud services, and enterprise solutions.">
+    <meta property="og:image" content="{{ getFilePath(getSetting('app_logo')) }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+
     <!-- Favicon img -->
     <link rel="shortcut icon" href="{{ asset('assets/frontend/images/favicon.png') }}">
     <!-- Bootstarp min css -->

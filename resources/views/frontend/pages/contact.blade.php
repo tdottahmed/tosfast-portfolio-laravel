@@ -26,9 +26,10 @@
             <div class="row g-4">
                 <div class="col-lg-5">
                     <div class="contact__left-item primary-bg">
-                        <h3 class="text-white mb-30">Contact Information</h3>
-                        <p class="text-white">Nullam varius, erat quis iaculis dictum, eros urna varius eros, ut
-                            blandit felis odio in turpis. Quisque.</p>
+                        <h3 class="text-white mb-30">Get in Touch with Tosfast</h3>
+                        <p class="text-white">Have a project in mind or need expert IT solutions for your business?
+                            We’re here to help! Contact Tosfast for innovative technology solutions tailored to your
+                            needs.</p>
                         <ul class="mt-40 mb-40">
                             <li>
                                 <i>
@@ -44,7 +45,8 @@
                                 </i>
                                 <div>
                                     <span class="text-white">Call Us 7/24</span>
-                                    <h3 class="mt-1"><a class="text-white" href="tel:+2085550112">+208-555-0112</a>
+                                    <h3 class="mt-1"><a class="text-white"
+                                            href="tel:{{ getSetting('app_phone') }}">{{ getSetting('app_phone') }}</a>
                                     </h3>
                                 </div>
                             </li>
@@ -65,7 +67,8 @@
                                 </i>
                                 <div>
                                     <span class="text-white">Make a Quote</span>
-                                    <h3 class="mt-1"><a class="text-white" href="#0">info@gmail.com</a>
+                                    <h3 class="mt-1"><a class="text-white"
+                                            href="mailto:{{ getSetting('app_email') }}">{{ getSetting('app_email') }}</a>
                                     </h3>
                                 </div>
                             </li>
@@ -83,8 +86,7 @@
                                 </i>
                                 <div>
                                     <span class="text-white">Location</span>
-                                    <h3 class="mt-1"><a class="text-white" href="tel:+2085550112">4517 Washington
-                                            ave.</a>
+                                    <h3 class="mt-1"><a class="text-white">{{ getSetting('app_address') }}</a>
                                     </h3>
                                 </div>
                             </li>
@@ -108,35 +110,37 @@
                             </h5>
                             <h2 class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">Ready to Get
                                 Started?</h2>
-                            <p class="wow fadeInUp mt-3" data-wow-delay="400ms" data-wow-duration="1500ms">Nullam
-                                varius,
-                                erat quis iaculis dictum, eros urna varius eros, ut blandit felis odio in turpis.
-                                Quisque rhoncus, eros
-                                in auctor ultrices,</p>
+                            <p class="wow fadeInUp mt-3" data-wow-delay="400ms" data-wow-duration="1500ms">
+                                We’re here to help! Contact Tosfast for innovative technology solutions tailored to your
+                                needs.</p>
                         </div>
                         <div class="contact__form">
-                            <form action="#">
+                            <form action="{{ route('frontend.sendEmail') }}" method="post">
+                                @csrf
                                 <div class="row">
                                     <div class="col-6">
                                         <label for="name">Your Name*</label>
-                                        <input id="name" class="bg-transparent bor" type="text"
-                                            placeholder="Your Name">
+                                        <input id="name" name="name" class="bg-transparent bor"
+                                            type="text" placeholder="Your Name">
                                     </div>
                                     <div class="col-6">
                                         <label for="email">Your Email*</label>
-                                        <input class="bg-transparent bor" id="email" type="email"
-                                            placeholder="Your Email">
+                                        <input class="bg-transparent bor" id="email" name="email"
+                                            type="email" placeholder="Your Email">
                                     </div>
                                 </div>
+                                <label for="subject">Subject*</label>
+                                <input class="bg-transparent bor" id="subject" name="subject" type="text"
+                                    placeholder="Subject">
                                 <div class="text-area">
                                     <label for="massage">Write Message*</label>
-                                    <textarea class="bg-transparent bor" id="massage" placeholder="Write Message"></textarea>
+                                    <textarea name="message" class="bg-transparent bor" id="massage" placeholder="Write Message"></textarea>
                                 </div>
                                 <div class="btn-two">
                                     <span class="btn-circle">
                                     </span>
-                                    <a href="#" class="btn-one">Send Message <i
-                                            class="fa-regular fa-arrow-right-long"></i></a>
+                                    <button class="btn-one">Send Message <i
+                                            class="fa-regular fa-arrow-right-long"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -150,7 +154,7 @@
     <!-- Contact map area start here -->
     <div class="contact__map">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122897.88733150701!2d-48.09324971503908!3d-15.721541570017282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3d18df9ae275%3A0x738470e469754a24!2sBras%C3%ADlia%20-%20Brasilia%2C%20Federal%20District%2C%20Brazil!5e0!3m2!1sen!2sbd!4v1703471804969!5m2!1sen!2sbd"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3638.6065558090527!2d90.40970907481544!3d24.220555478352566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375677d07ba19c3f%3A0x15721302a38f96f6!2sMawna%20Chowrasta%20Bus%20Stand.!5e0!3m2!1sen!2sbd!4v1740498185823!5m2!1sen!2sbd"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>

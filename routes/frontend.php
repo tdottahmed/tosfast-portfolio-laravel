@@ -13,3 +13,4 @@ Route::get('/products', [HomeController::class, 'products'])->name('frontend.pro
 Route::get('/product/{product}', [HomeController::class, 'productSingle'])->name('frontend.productSingle');
 Route::post('/update-content', [HomeController::class, 'updateContent'])->name('frontend.updateContent');
 Route::get('/get-content', [HomeController::class, 'getContent'])->name('frontend.getContent');
+Route::post('/send-email', [HomeController::class, 'sendEmail'])->name('frontend.sendEmail');

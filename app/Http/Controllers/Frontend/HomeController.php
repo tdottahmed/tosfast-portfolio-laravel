@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Banner;
-use Illuminate\Http\Request;
-use App\Models\FrontendContent;
-use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Service;
+use Illuminate\Http\Request;
+use App\Mail\OrganizationEmail;
+use App\Models\FrontendContent;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -83,5 +86,27 @@ class HomeController extends Controller
     {
         $content = FrontendContent::all();
         return response()->json(['data' => $content]);
+    }
+
+    public function sendEmail(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'subject' => 'required|string',
+            'message' => 'required|string'
+        ]);
+        try {
+            Mail::to(getSetting('app_email'))->send(new OrganizationEmail(
+                $request->name,
+                $request->email,
+                $request->subject,
+                $request->message
+            ));
+            return redirect()->route('frontend.home')->with('success', 'Email sent successfully');
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return back()->with('error', 'Email sent failed');
+        }
     }
 }

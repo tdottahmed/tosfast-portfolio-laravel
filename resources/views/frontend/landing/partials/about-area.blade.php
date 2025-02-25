@@ -34,7 +34,7 @@
                 <div class="section-header mb-40">
                     <h5 class="wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <img class="me-1" src="assets/frontend/images/icon/section-title.png" alt="icon">
-                        <span class="editable" data-key="about_title">ABOUT Gratech</span>
+                        <span class="editable" data-key="about_title">ABOUT Tosfast</span>
                     </h5>
                     <h2 class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
                         <span class="editable" data-key="about_heading">We Strive to Offer Intelligent Business
