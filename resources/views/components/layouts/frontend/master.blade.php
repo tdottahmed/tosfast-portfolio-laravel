@@ -26,7 +26,7 @@
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
 
     <!-- Favicon img -->
-    <link rel="shortcut icon" href="{{ asset('assets/frontend/images/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ getFilePath(getSetting('app_favicon')) }}">
     <!-- Bootstarp min css -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
     <!-- Mean menu css -->

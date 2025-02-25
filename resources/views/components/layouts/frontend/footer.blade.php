@@ -54,7 +54,7 @@
                 <h3 class="footer-title">Quick Link</h3>
                 <ul>
                     <li><a href="{{ route('frontend.about') }}"><i class="fa-regular fa-angles-right me-1"></i> About
-                            Gratech</a>
+                            Tosfast</a>
                     </li>
                     <li><a href="{{ route('frontend.service') }}"><i class="fa-regular fa-angles-right me-1"></i> Our
                             Services</a>
