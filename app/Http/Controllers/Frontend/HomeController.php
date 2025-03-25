@@ -41,7 +41,9 @@ class HomeController extends Controller
 
     public function about()
     {
-        return view('frontend.pages.about');
+        $services = Service::inRandomOrder()->take(3)->get();
+        $products = Product::inRandomOrder()->take(5)->get();
+        return view('frontend.pages.about',compact('services', 'products'));
     }
 
     public function blog()
